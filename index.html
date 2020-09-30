@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Socket.IO chat</title>
+    <style>
+        body {
+            font-family: Whitney;
+            background-color: #2F3136;
+            color: #72767D;
+            font-size: 15pt;
+        }
+
+        .indicator.online {
+            background: #28B62C;
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            border-radius: 50%;
+            -webkit-animation: pulse-animation 2s infinite linear;
+        }
+
+        @-webkit-keyframes pulse-animation {
+            0% {
+                -webkit-transform: scale(1);
+            }
+
+            25% {
+                -webkit-transform: scale(1);
+            }
+
+            50% {
+                -webkit-transform: scale(1.2)
+            }
+
+            75% {
+                -webkit-transform: scale(1);
+            }
+
+            100% {
+                -webkit-transform: scale(1);
+            }
+        }
+
+        .indicator.offline {
+            background: #FF4136;
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align: center">
+
+        <div>
+            Petrol <span id='petrol-online' class="indicator online"></span>
+        </div>
+        <div>
+            Sheena <span id='sheena-online' class="indicator online"></span>
+        </div>
+        <div>
+            Waldy <span id='waldy-online' class="indicator online"></span>
+        </div>
+        <div>
+            Cashen <span id='cashen-online' class="indicator online"></span>
+        </div>
+        <div>
+            Marly <span id='marly-online' class="indicator online"></span>
+        </div>
+        <div>
+            Kenzo <span id='kenzo-online' class="indicator online"></span>
+        </div>
+        <div>
+            Darbo <span id='darbo-online' class="indicator online"></span>
+        </div>
+        <div>
+            Jack <span id='jack-online' class="indicator online"></span>
+        </div>
+        <div>
+            nips <span id='nips-online' class="indicator online"></span>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        var socket = io();
+        socket.on('memberStatusChange', function (msg) {
+            if (msg.petrol) $("#petrol-online").show(); else $("#petrol-online").hide();
+            if (msg.sheena) $("#sheena-online").show(); else $("#sheena-online").hide();
+            if (msg.waldy) $("#waldy-online").show(); else $("#waldy-online").hide();
+            if (msg.cashen) $("#cashen-online").show(); else $("#cashen-online").hide();
+            if (msg.marly) $("#marly-online").show(); else $("#marly-online").hide();
+            if (msg.kenzo) $("#kenzo-online").show(); else $("#kenzo-online").hide();
+            if (msg.darbo) $("#darbo-online").show(); else $("#darbo-online").hide();
+            if (msg.jack) $("#jack-online").show(); else $("#jack-online").hide();
+            if (msg.nips) $("#nips-online").show(); else $("#nips-online").hide();
+
+        });
+    </script>
+</body>
+
+</html>
